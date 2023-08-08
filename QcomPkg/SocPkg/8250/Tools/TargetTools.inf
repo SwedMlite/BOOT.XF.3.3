@@ -1,0 +1,20 @@
+#/** @file TargetTools.inf
+#  
+#  INF used by packit.py for including target tools files into packed build.
+#  
+#  Copyright (c) 2018 Qualcomm Technologies Inc. All rights reserved.
+#
+#**/
+#
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 04/25/18   kpa     Initial version
+#
+#==============================================================================
+
+[Sources]
+

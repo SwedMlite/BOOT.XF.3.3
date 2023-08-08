@@ -1,0 +1,19 @@
+SETUP
+-----
+* Sync Tianocore from https://github.com/tianocore/edk2
+* Copy everything inside the build_tools folder to the build root directory
+* (OPTIONAL) Replace the BaseTools folder from the one in the XBL image if SnapDragon LLVM toolchain support is required
+* (OPTIONAL) If the image will be deployed on a production target, sectools is required to sign the FV
+
+
+DIR LAYOUT
+----------
+* build_tools/ -- Build scripts for building QcomSdkPkg
+* Tools/ -- Trace32 cmm script
+* Include/ -- Header files for libraries/protocols
+* Library/ -- Static library files
+
+
+BUILD
+-----
+* Run b.py

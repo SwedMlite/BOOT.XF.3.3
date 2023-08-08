@@ -1,0 +1,39 @@
+#/** @file ChipInfoLib.inf
+#
+#  Build file for the ChipInfo APIs that are common across all XBL images
+#
+#  Copyright (c) 2015, 2017, 2019, Qualcomm Technologies, Inc. All rights reserved.
+#
+#**/
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who        what, where, why
+# --------   ---        ----------------------------------------------------------
+# 05/12/15   bh         Replace LoaderUtilsLib with MuslLib
+# 01/09/15   pbi        Created file
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = ChipInfoCommonLib
+  FILE_GUID                      = D935CCA4-6622-407D-8F80-FBB051A324EE
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = ChipInfoCommonLib
+
+[Sources.common]
+  ChipInfo.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  QcomPkg/QcomPkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+
+[LibraryClasses]
+  ProcLib
+  MuslLib
+  BaseMemoryLib
+

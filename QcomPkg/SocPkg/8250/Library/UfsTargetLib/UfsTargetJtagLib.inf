@@ -1,0 +1,44 @@
+#/** @file UfsTargetJtagLib.inf
+#
+#  UFS Target lib for JTAG programmer
+#
+#  Copyright (c) 2017, 2018 Qualcomm Technologies, Inc . All rights reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#  $Header: $
+#  $DateTime: $
+#  $Author:  $
+#
+# when         who     what, where, why
+# ----------   ---     ----------------------------------------------------------
+# 2018-25-01   vk      Remove ArmLib
+# 2017-06-01   jt      Initial revision.
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UfsTargetJtagLib
+  FILE_GUID                      = 313DC796-E7E0-44E0-8D9A-CE5F6A9B212D  
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = UfsTargetJtagLib
+
+[Sources]
+  ../../Settings/UFS/jtag/ufs_bsp_jtag.c
+
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/XBLLoaderApi.dec  
+
+[LibraryClasses]
+  DebugLib
+  ClockTargetLib
+

@@ -1,0 +1,40 @@
+#/** @file 
+#                    UefiSecAppLoaderLibNull.inf
+#
+#
+# Copyright (c) 2018 Qualcomm Technologies, Inc. All rights reserved.
+#
+#  
+#**/
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 03/08/18   ai      Initial Null checkin
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UefiSecAppLoaderLib 
+  FILE_GUID                      = 60A47987-EE1D-4DBD-B6AF-08596F4DF17C 
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = UefiSecAppLoaderLib 
+
+[Sources]
+  UefiSecAppLoad.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+
+[LibraryClasses]
+  DebugLib 
+
+[Guids]
+
+

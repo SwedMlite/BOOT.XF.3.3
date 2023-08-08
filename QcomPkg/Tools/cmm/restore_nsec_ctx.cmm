@@ -1,0 +1,266 @@
+;============================================================================
+; Name: restore_nsec_ctx.cmm
+;
+; Description: Restore NSec ctxt when PC is in secure side
+;
+; Copyright (c) 2017 - 2019 Qualcomm Technologies, Inc.
+; All Rights Reserved.
+; Qualcomm Technologies Proprietary and Confidential.
+;
+;----------------------------------------------------------------------------
+
+;============================================================================
+;
+;                        EDIT HISTORY FOR MODULE
+;
+;  when         who     what, where, why
+;  ----------   ---     -----------------------------------------------------
+;  03-28-2019   yg      Add EL2 context addr info
+;  12-04-2018   yg      Update layout to latest version and update address
+;  07-07-2017   yg      Initial version
+;============================================================================;
+
+;
+;
+;   Usage : do restore_nsec_ctx <aa64_nsec_ctx> <core_num>
+;
+;     aa64_nsec_ctx : Pointer to the data structure that contains NSec ctxt.
+;                     each context structure per core is 0x1F8 bytes
+;     core_num : which core registers to restore (automate later)
+;
+;
+
+
+;------------------------------------------------------------------------------
+;Entry Point
+;------------------------------------------------------------------------------
+entry &CoreNum
+
+local &Reg
+local &CoreCtxtPtr
+local &Offset
+local &Nsec_Ctxt_EL3
+local &Nsec_Ctxt_EL2
+local &BytesPerCore
+local &CoreOffset
+
+  &BytesPerCore=0x200
+
+;
+;    0x146BFB20 => NS_EL1 context table in EL2 for any SMC's originated
+;    0x1C026F28 => NS_EL1 context in EL3 for any exceptions originated or
+;                  EL2 context for any SMC's passed through from lower EL's
+;
+
+
+;  get nsec ctxt ptr from TZ
+  ; &Nsec_Ctxt_EL3=address.offset(\\mon\mon_ctx\nsec_ctx)
+
+  ;  If symbols are not loaded, set the pointer manually
+  ; Lookup symbol for NS context in monitor map file and update if changed
+  ; TODO: read pointer from mem when available
+  &Nsec_Ctxt_EL3=0x1C028760
+  &Nsec_Ctxt_EL2=0x146BFB20
+
+  print "Nsec context in EL3 is @ : &Nsec_Ctxt_EL3"
+  print "Nsec context in EL2 is @ : &Nsec_Ctxt_EL2"
+
+  if ("&CoreNum"=="")
+  (
+    &CoreNum=0
+  )
+
+  &CoreOffset=&CoreNum*&BytesPerCore
+
+  ; Set Core context pointer appropriately
+  &CoreCtxtPtr=&Nsec_Ctxt_EL3+&CoreOffset
+
+  &Offset=0
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X0 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X1 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X2 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X3 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X4 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X5 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X6 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X7 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X8 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X9 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X10 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X11 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X12 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X13 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X14 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X15 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X16 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X17 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X18 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X19 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X20 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X21 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X22 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X23 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X24 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X25 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X26 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X27 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X28 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X29 &Reg
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s X30 &Reg
+
+  &Offset=&Offset+0x8    ; SP_EL0
+
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset)
+  &Offset=&Offset+0x8
+  r.s SP &Reg
+
+  ; sys_regs_ctx offset
+  &Offset=0x108
+
+;   ELR_EL1      0x30401
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x8)
+  data.set SPR:0x30401 %quad &Reg
+
+
+;   VBAR_EL1     0x30C00
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x18)
+  data.set SPR:0x30401 %quad &Reg
+
+
+;   TTBR0_EL1    0x30200
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x28)
+  data.set SPR:0x30C00 %quad &Reg
+
+
+;   TCR_EL1      0x30202
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x30)
+  data.set SPR:0x30202 %quad &Reg
+
+
+;   TPIDR_EL1    0x30D04
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x48)
+  data.set SPR:0x30D04 %quad &Reg
+
+
+;   SCTLR_EL1    0x30100
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x50)
+  data.set SPR:0x30100 %quad &Reg
+
+
+;   MAIR_EL1     0x30A20
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0x60)
+  data.set SPR:0x30A20 %quad &Reg
+
+
+;  ELR_EL3 => PC
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0xB0)
+  r.s PC &Reg
+
+;  SCR_EL3   Switch to NS mode
+;  Data.Set C15:0x0011 %Long 0x1
+
+
+;  SPSR_EL3 => CPSR
+  &Reg=data.quad(D:&CoreCtxtPtr+&Offset+0xC0)
+  r.s CPSR &Reg
+
+;d.l
+;v.f
+;area
+
+enddo
+
+

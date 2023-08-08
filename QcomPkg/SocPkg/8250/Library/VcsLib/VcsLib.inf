@@ -1,0 +1,50 @@
+#/** @file HALclkLibUEFI.inf
+#
+#  Component description file for HAL clock module
+#
+#  Copyright (c) 2017- 2019 QUALCOMM Technologies Incorporated.  All Rights Reserved.
+#
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 10/25/13   vk      Remove warning as error
+# 03/22/11   vs      Added shared HAL clock library - HALclkSharedLib.
+# 12/23/10   vs      Created.
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = VcsLib
+  FILE_GUID                      = A892CCB8-B973-4B0F-A75D-C8AA64342B03
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = VcsLib
+
+
+[Sources.common]
+  VCSBSP.c
+  VCSImage.c
+  VCSTarget.c
+  
+
+[BuildOptions.AARCH64]
+  #GCC:*_*_*_CC_FLAGS = -O0
+
+[LibraryClasses]
+  VcsSharedLib
+
+[Protocols]
+
+[Packages]
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPkg/ArmPkg.dec
+  QcomPkg/QcomPkg.dec
+

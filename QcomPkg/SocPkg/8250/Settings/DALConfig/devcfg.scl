@@ -1,0 +1,34 @@
+/*=============================================================================
+  
+                     SCATTER LOADING DESCRIPTION FILE
+  
+  Copyright 2014 - 2017 by Qualcomm Technologies, Inc. All Rights Reserved.
+  
+  GENERAL DESCRIPTION
+  
+  The scatter loading description file is used to define the SBL1 memory map.
+=============================================================================*/
+
+#include "Target_cust.h"
+
+SECTIONS
+{
+  .=DEVCFG_DATA_SECTION_BASE-0x14;
+  .devcfg_meta_data (DEVCFG_DATA_SECTION_BASE-0x14) : { 
+    *(*data.devcfg_meta_data*);
+  }
+  .devcfg_struct_pointers DEVCFG_DATA_SECTION_BASE : { 
+    *(*data.DALPROP_StructPtrs*); 
+  }
+  .devcfg_prop_bin : { 
+    *(*data.DALPROP_PropBin*);
+  }
+  .devcfg_driverlist : {
+    *(*data.driver_list*);
+  }
+  .devcfg_structures : {
+    *(*data.*);
+    *(.bss*);
+    . = ALIGN (0x4);
+  } 
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<driver name="NULL">
+  <global_def>
+    <var_seq name="QusbPhyIncFile" type="DALPROP_DATA_TYPE_STRUCT_INC_FILE">
+      ../../8250/Settings/Qusb/qusb_phy_settings.c
+    </var_seq>
+  </global_def>
+  <device name="QUSB_PORT_PRIM">
+    <!-- HS PHY Configuration Settings -->
+    <props name="hs_phy_cfg" type="DALPROP_ATTR_TYPE_STRUCT_PTR">
+      qusb_dci_hs_phy_cfg
+    </props>
+	<!-- SS PHY Configuration Settings -->
+    <props name="ss_phy_cfg" type="DALPROP_ATTR_TYPE_STRUCT_PTR">
+      qusb_dci_ss_phy_cfg_common
+    </props>
+    <props name="hs_phy_cfg_size" type="DALPROP_ATTR_TYPE_UINT32">
+      qusb_dci_hs_phy_cfg_size
+    </props>
+    <props name="ss_phy_cfg_size" type="DALPROP_ATTR_TYPE_UINT32">
+      qusb_dci_ss_phy_cfg_common_size
+    </props>
+  
+    </device>
+	<!-- SS PHY Configuration Settings
+  <device name="QUSB_PORT_SEC">
+
+    <props name="hs_phy_sec_cfg" type="DALPROP_ATTR_TYPE_STRUCT_PTR">
+      qusb_dci_hs_phy_sec_cfg
+    </props>
+
+    <props name="ss_phy_sec_cfg" type="DALPROP_ATTR_TYPE_STRUCT_PTR">
+      qusb_dci_ss_phy_sec_cfg_common
+    </props>
+  </device>
+       -->
+</driver>

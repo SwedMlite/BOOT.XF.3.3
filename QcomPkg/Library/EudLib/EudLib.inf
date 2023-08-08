@@ -1,0 +1,37 @@
+#/** @file EudLib.inf
+#
+#  Component description file for EUD module.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 07/15/19   dt      Created.
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = EudLib
+  FILE_GUID                      = CEA2B890-F7DF-4A0F-B32D-16DB9E0057F1
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = EudLib
+
+[Sources.common]
+  EudLib.c
+
+[LibraryClasses]
+  UefiCfgLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPkg/ArmPkg.dec
+  QcomPkg/SocPkg/SocPkg.dec
+  QcomPkg/QcomPkg.dec
+

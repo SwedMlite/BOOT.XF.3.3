@@ -1,0 +1,68 @@
+#/** @file DDITargetLib.inf
+#
+#  DDI Lib
+#  
+#  Copyright (c) 2019 Qualcomm Technologies, Inc.  All Rights Reserved.
+#  Qualcomm Technologies Proprietary and Confidential.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+# when       who       what, where, why
+# --------   ---       ----------------------------------------------------------
+# 06/05/19   jihyunl   Initial Revision
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DDITargetLib
+  FILE_GUID                      = 36b057ae-ae41-4113-bd03-ac00b6a09e1e
+  MODULE_TYPE                    = SEC
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = DDITargetLib
+
+[BuildOptions]
+  RVCT:*_*_*_CC_FLAGS = -DSHARED_IMEM_DDR_PARAM_BASE=0xFE805190 -DSHARED_IMEM_DDR_TRAINING_COOKIE=0xFE805018 -DBUILD_BOOT_CHAIN
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = -DDDRCC_PLL_EXTENSION_0 -DFEATURE_BOOT_EXTERN_DDR_COMPLETED -DFEATURE_BOOT_DDI_ENABLE -DSHARED_IMEM_DDR_PARAM_BASE=0xFE805190 -DSHARED_IMEM_DDR_TRAINING_COOKIE=0xFE805018 -DBUILD_BOOT_CHAIN -DUSE_LOADER_UTIL
+
+[Sources.common]
+
+# DDI Target Sources
+  ../../../8250/Library/DDITargetLib/ddi_testing.c
+  ../../../8250/Library/DDITargetLib/ddi_test_cases.c
+  ../../../8250/Library/DDITargetLib/ddi_test_list.c
+  
+#DSF Target Config 
+# DDR target sources 
+  # Header file inclusions  
+  ../../../../Library/DDRLib/common/params/v5/ddr_params.h
+
+#Target header inclusion
+  ../../../8250/Library/DDRTargetLib/ddr_status_reg.h
+  ../../../8250/Library/DDRTargetLib/ddr_target.h
+  ../../../8250/Library/DDRTargetLib/ddr_shared_params.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/SocPkg/SocPkg.dec
+  QcomPkg/XBLLoaderApi.dec
+  QcomPkg/SocPkg/8250/Library/DSFTargetLib/DSFTargetLibPkg.dec
+  QcomPkg/SocPkg/8250/Library/DDITargetLib/DDITargetLibPkg.dec
+  
+[LibraryClasses]
+  MuslLib
+  ServicesUtilsLib
+  XBLConfigLib
+  TsensLoaderLib
+[FeaturePcd]
+
+[FixedPcd]
+ gQcomTokenSpaceGuid.PcdBuildType
+[Guids]
+

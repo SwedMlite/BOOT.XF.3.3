@@ -1,0 +1,49 @@
+#/** @file XBLSdiLib.inf
+#
+#  XBL Sdi
+#  
+#  Copyright (c) 2018-2019 Qualcomm Technologies, Inc.  All Rights Reserved.
+#  Qualcomm Technologies Proprietary and Confidential.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 11/28/18   ds     Initial Revision
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = XBLSdi
+  FILE_GUID                      = 70428e93-9963-44aa-a6cd-e4091ec9b4c3
+  MODULE_TYPE                    = USER_DEFINED
+  VERSION_STRING                 = 1.0
+
+[Sources.common]
+  XBLSdi.c
+
+[Sources.AARCH64]
+  ModuleEntryPoint.S | GCC
+  ModuleEntryPoint.S | RVCT
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = -Werror -DBOOT_PBL_H=\"pbl_sbl_shared.h\" -DUSE_LOADER_UTILS
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  ArmPkg/ArmPkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/XBLLoaderApi.dec
+  QcomPkg/Library/MuslLib/MuslLib.dec
+  QcomPkg/SocPkg/Library/XBLLoaderLib/XBLLoaderLibPkg.dec
+
+[LibraryClasses]
+  MuslLib
+  BaseLib
+  BusyWaitLib
+  DDRSdiLib

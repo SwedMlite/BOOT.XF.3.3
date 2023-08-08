@@ -1,0 +1,29 @@
+#/** @file DDRFwSdiLibLP4.inf
+#
+#  DDR Lib
+#  
+#  Copyright (c) 2019 Qualcomm Technologies, Inc.  All Rights Reserved.
+#  Qualcomm Technologies Proprietary and Confidential.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 06/21/19   yps     Initial Revision
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DDRFwSdiLib
+  FILE_GUID                      = 5452BA01-44C3-4D2C-8A49-2E4D89CACC1B
+  MODULE_TYPE                    = SEC
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = DDRFwSdiLib
+
+[Binaries.AARCH64]
+  PE32|release/target/SM8250LP4/external/ddr_fw_sdi.lib
+  

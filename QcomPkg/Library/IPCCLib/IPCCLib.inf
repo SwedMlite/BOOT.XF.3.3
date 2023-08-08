@@ -1,0 +1,48 @@
+#/** @file IPCCLib.inf
+#  
+#  Qualcomm IPCC Library
+#  
+#  Copyright (c) 2018,  Qualcomm Technologies, Inc. All rights reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 11/05/2018 cpaulo  Initial revision.
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = IPCCLib
+  FILE_GUID                      = DBFC38AA-B8F0-494C-AEA3-0B06512BF284
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = IPCCLib
+
+[Sources.common]
+  IPCCLib.c
+
+[Packages]
+  QcomPkg/QcomPkg.dec
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPkg/ArmPkg.dec
+
+[Protocols]
+  gEfiCpuArchProtocolGuid
+
+[LibraryClasses]
+  PcdLib
+  DALModEnvLib
+  DALFwkLib
+
+[Pcd.common]
+  gQcomTokenSpaceGuid.PcdIPCCLibProtocol
+  gQcomTokenSpaceGuid.PcdIPCCLibLocalClient
+  gQcomTokenSpaceGuid.PcdIPCCLibTotalSignals
+

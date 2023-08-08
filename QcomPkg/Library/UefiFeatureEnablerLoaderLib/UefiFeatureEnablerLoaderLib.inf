@@ -1,0 +1,32 @@
+#/** @file UefiFeatureEnablerLoaderLibRelease.inf
+#  
+#   Copyright (c) 2019 Qualcomm Technologies, Inc.
+#   All Rights Reserved.
+#   Confidential and Proprietary - Qualcomm Technologies, Inc.
+#  
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 07/12/19   zwy      Initial version
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UefiFeatureEnablerLoaderLib
+  FILE_GUID                      = 1D1B1D1D-7169-4EE9-8F68-B76F1A5C5E09
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = UefiFeatureEnablerLoaderLib
+
+[Binaries.Arm]
+   PE32|UefiFeatureEnablerLoaderLib.lib
+
+[Binaries.AARCH64]
+   PE32|UefiFeatureEnablerLoaderLib.lib
+

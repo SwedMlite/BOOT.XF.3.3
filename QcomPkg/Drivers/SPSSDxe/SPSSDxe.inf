@@ -1,0 +1,66 @@
+#/** @file SPSSDxe.inf
+#
+#  Qualcomm SPSS driver INF file
+#
+#  Copyright (c) 2019, Qualcomm Technologies Inc. All rights reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when         who     what, where, why
+# ----------   ---     ----------------------------------------------------------
+# 06/21/19     as      Add IAR support
+# 06/05/19     av      Initial version - introduce driver that loads SPSS
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SPSSDxe
+  FILE_GUID                      = 5D787B6C-6254-43F5-A7A8-CB25329Cf97E
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SPSSDxe_Entry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = ARM, AARCH64
+#
+
+[Sources]
+  SPSSDxe.c
+  spss_iar.c
+
+#[BuildOptions.AARCH64]
+  #GCC:*_*_*_CC_FLAGS = -O0
+
+[Packages]
+  EmbeddedPkg/EmbeddedPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  QcomPkg/QcomPkg.dec
+  ArmPkg/ArmPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  NpaApiLib
+  UefiLib
+  QcomLib
+  ULogApiLib
+  ReportStatusCodeLib
+  UncachedMemoryAllocationLib
+
+[Protocols]
+  gEfiLoadedImageProtocolGuid
+  gEfiPilProtocolGuid
+  gEfiChipInfoProtocolGuid
+  gEfiHwioProtocolGuid
+  gQcomScmProtocolGuid
+  gPILProxySPSSGuid
+
+[Depex]
+  gEfiDalSysProtocolGuid
+

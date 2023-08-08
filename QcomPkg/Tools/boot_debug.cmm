@@ -1,0 +1,99 @@
+;****************************************************************************
+;**         boot_debug.cmm
+;**
+;**         This script performs setup for debugging on secboot 3.0 Architecture.
+;**
+;** Copyright  2018-2019 by Qualcomm Technologies, Incorporated.  All Rights Reserved.
+;**
+;****************************************************************************
+;**
+;**                        EDIT HISTORY FOR MODULE
+;**
+;** $$
+;**
+;** when       who     what, where, why
+;** --------   ---     ------------------------------------------------------
+;** 06/20/18   ds      Add SM8250
+;****************************************************************************
+
+  ; This script is a wrapper for the target specific debug script
+
+  ;============================================================================
+  ; Declare variables used
+  ;============================================================================
+  local &Choice
+  local &Option  ; Menu Option
+  global &StorageType
+  local &Variant
+  ;============================================================================
+  ; Get the arguments passed in.
+  ;============================================================================
+  ENTRY &Choice &Variant &Option &Storage &QSEEBuildPath
+  
+  ;============================================================================
+  ; Set up the display window
+  ;============================================================================
+
+  winclear
+  area.RESET 
+  WINPOS 0% 50% 68% 50% 0. 0. W001
+  Area.create MAIN
+  Area.view MAIN
+  Area.select MAIN
+  
+  ;============================================================================
+  ; If user passed TARGET on command line, just go
+  ;============================================================================ 
+  if "&Choice"=="SM8250"
+  (
+    gosub CheckVariant
+    do boot_debug_common.cmm Soc 8250 Loader False &Variant &Option &QSEEBuildPath
+    enddo
+  )
+  if "&Choice"=="Lahaina"
+  (
+    gosub CheckVariant
+    do boot_debug_common.cmm Soc Lahaina Loader False &Variant &Option &QSEEBuildPath
+    enddo
+  )
+
+  ;============================================================================
+  ; Provide user with a choice for the chipset
+  ;============================================================================
+    
+  print "Please enter chipset number: "
+  print "eg: SM8250"
+  print "eg: Lahaina"
+  print
+  print "Please make a choice: "
+  enter &Choice
+  print "Enter Varaint - LAA OR LAB: "
+  enter &Variant
+  gosub CheckVariant
+  if "&Choice"=="SM8250"
+  (
+    do boot_debug_common.cmm Soc 8250 Loader False &Variant
+    enddo
+  )
+  if "&Choice"=="Lahaina"
+  (
+    do boot_debug_common.cmm Soc Lahaina Loader False &Variant
+    enddo
+  )
+  ;Default case 
+  (
+    print "Incorrect entry"
+    enddo
+  )
+  
+CheckVariant:
+  if "&Variant"!=""
+  (
+    &Variant="&Choice"+"&Variant"
+  )
+  else
+  (
+    print "Variant not passed, so defaulting to LAA (DDR LP5)"
+    &Variant="&Choice"+"LAA"
+  )
+  return

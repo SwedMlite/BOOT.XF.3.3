@@ -1,0 +1,32 @@
+#/** @file IpaTargetLib.inf
+#  
+#  Build file for the IpaTarget Library.
+#  
+#  Copyright (c) 2019, Qualcomm Technologies Inc. All rights reserved.
+#
+#**/
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who        what, where, why
+# --------   ---        ----------------------------------------------------------
+# 02/21/19   nc         created
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = IpaTargetLib
+  FILE_GUID                      = 7f77cc12-4055-43bf-8210-4fc9a9ec6a29
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = IpaTargetLib
+
+[Sources.common]
+  ./src/ipa_boot.c
+  ./inc/ipa_hwio.h
+
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec

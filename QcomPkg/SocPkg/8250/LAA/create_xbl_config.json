@@ -1,0 +1,19 @@
+{
+	"CFGL": {
+		"file1": {
+			"file_name" : "/Build/SM8250LAA/xblconfig/Pmic.bin", 
+			"config_name": "/pmic_settings.bin",
+			"attributes": "0"
+		},
+		"file2": {
+			"file_name" : "/QcomPkg/SocPkg/8250/Settings/DSF/release/SM8250LP5/6008_0100_1_dcb.bin",
+			"config_name": "/6008_0100_1_dcb.bin",
+			"attributes": "0"
+		},
+		"file3": {
+			"file_name" : "/QcomPkg/SocPkg/8250/Settings/DSF/release/SM8250LP5/6008_0200_1_dcb.bin",
+			"config_name": "/6008_0200_1_dcb.bin",
+			"attributes": "0"
+		}		
+	}
+}

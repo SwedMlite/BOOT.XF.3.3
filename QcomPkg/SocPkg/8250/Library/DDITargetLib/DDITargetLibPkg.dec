@@ -1,0 +1,44 @@
+#/** @file DDITargetLibPkg.dec
+# DDI package.
+#
+#  Copyright (c) 2019 Qualcomm Technologies, Inc.  All Rights Reserved.
+#  Qualcomm Technologies Proprietary and Confidential.
+#
+#**/
+#
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 06/05/19   jihyunl   Initial Revision
+#
+#==============================================================================
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = DDITargetLibPkg
+  PACKAGE_GUID                   = 36b057ae-ae41-4113-bd03-ac00b6a09e1e
+  PACKAGE_VERSION                = 0.1
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types:
+#  BASE SEC PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER UEFI_APPLICATION
+#
+################################################################################
+[Includes.common]
+  ../../../8250/Library/DDITargetLib
+  ../../../8250/Include
+  ../../../../XBLLoader
+  ../../Settings/DSF
+  ../../../../Include/api/pmic/pm
+  
+#  Z:\8996\boot\boot.xf.1.0.bootxf10_ddr_initial_commit\QcomPkg\Library\DDRLib\common\sns_api
+
+
+

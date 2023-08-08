@@ -1,0 +1,31 @@
+#/** @file UCLib_loaderRelease.inf
+#  
+#  
+#   Copyright (c) 2019 Qualcomm Technologies, Inc.  All Rights
+#   Reserved. Qualcomm Technologies Proprietary and Confidential.
+#  
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 3/26/2019   jp      Initial version 
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UCLib
+  FILE_GUID                      = afbfa71a-b8e9-49e5-bb37-b707e741d4a2
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = UCLib
+
+[Binaries.Arm]
+   PE32|UCLib.lib
+
+[Binaries.AARCH64]
+   PE32|UCLib.lib

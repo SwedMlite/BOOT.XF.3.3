@@ -1,0 +1,46 @@
+#/** @file ImagePathUtilsLib.inf
+#  
+#  Contains Extract image name from path functionality
+#  
+#  Copyright (c) 2019 Qualcomm Technologies Inc. All rights reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 06/20/19   am      Initial version
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = ImagePathUtilsLib
+  FILE_GUID                      = a5269be0-1f63-4b3a-9d16-f24234ca4238
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = ImagePathUtilsLib
+
+#
+#  VALID_ARCHITECTURES           = ARM AARCH64
+#
+
+[Sources]
+  ImagePathUtilsLib.c
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  ArmPkg/ArmPkg.dec
+
+[LibraryClasses]
+  BaseLib
+
+[Guids]
+  gQcomTokenSpaceGuid
+  gEbsPerfInfoHobGuid
+
+

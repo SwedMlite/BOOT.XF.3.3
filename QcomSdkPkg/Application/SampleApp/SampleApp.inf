@@ -1,0 +1,34 @@
+# @file SampleApp.inf
+#
+#   Copyright (c) 2019 Qualcomm Technologies, Inc. All rights
+#   reserved.
+#
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SampleApp
+#NOTE: Always generate unique GUIDs -- for example, use uudigen tool
+  FILE_GUID                      = D6D8D50A-B119-4C95-BE53-50AD14024E5E
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SampleAppInitialize
+
+[Sources]
+  SampleApp.c
+
+[Packages]
+  QcomSdkPkg/QcomSdkPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ArmPkg/ArmPkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  BaseLib
+  BaseMemoryLib
+  DebugLib
+
+[Protocols]
+
+[Depex]
+  TRUE

@@ -1,0 +1,59 @@
+{
+  # Build 8250 LAA, Release and Debug
+  "8250laa" : ["--variant", "LAA", "-t", "8250,QcomToolsPkg,QcomTestPkg"],
+  
+  # Build 8250 LAB, Release and  debug
+  "8250lab" : ["--variant", "LAB", "-t", "8250,QcomToolsPkg,QcomTestPkg"],
+  
+  # Build 8250 LAA, Debug
+  "8250laadbg" : ["--variant", "LAA", "-r", "DEBUG", "-t", "8250,QcomToolsPkg,QcomTestPkg"],
+  
+  # Build 8250 LAB, Debug
+  "8250labdbg" : ["--variant", "LAB", "-r", "DEBUG", "-t", "8250,QcomToolsPkg,QcomTestPkg"],
+  
+  # Build 8250 LAA, Release
+  "8250laarel" : ["--variant", "LAA", "-r", "RELEASE", "-t", "8250,QcomToolsPkg,QcomTestPkg"],
+
+  # Build 8250 LAA, Release
+  "8250labrel" : ["--variant", "LAB", "-r", "RELEASE", "-t", "8250,QcomToolsPkg,QcomTestPkg"],
+
+  # Build 8250 LAA, Debug, UEFI only
+  "8250laacoredbg" : ["--variant", "LAA", "-r", "DEBUG", "-t", "8250,QcomToolsPkg", "-C", "XBL_CORE"],
+
+  # Build 8250 LAB, Debug, UEFI only
+  "8250labcoredbg" : ["--variant", "LAB", "-r", "DEBUG", "-t", "8250,QcomToolsPkg", "-C", "XBL_CORE"],
+
+  # Build 8250 LAA, Debug, Loader only
+  "8250laad" : ["--variant", "LAA", "-r", "DEBUG", "-t", "8250", "-C", "XBL_LOADER"],
+
+  # Development build for testing
+  "dev" : ["--variant", "LAA", "-r", "DEBUG", "-t", "8250,QcomToolsPkg", "-C", "XBL_CORE"],
+
+  # Build 8250 LAA, Debug, UEFI only
+  "8250laauefi" : ["--variant", "LAA", "-r", "DEBUG", "-t", "8250", "-i", "UEFI"],
+
+  # Build 8250 LAB, Debug, UEFI only
+  "8250labuefi" : ["--variant", "LAB", "-r", "DEBUG", "-t", "8250", "-i", "UEFI"],
+
+  # Build Lahaina LAA, Debug, UEFI only
+  "lahainalaauefi" : ["--variant", "LAA", "-r", "DEBUG", "-t", "Lahaina", "-i", "UEFI"],
+
+  # Build Lahaina LAB, Debug, UEFI only
+  "lahainalabuefi" : ["--variant", "LAB", "-r", "DEBUG", "-t", "Lahaina", "-i", "UEFI"],
+
+  # Development build clean
+  "devclean" : ["--variant", "LAA", "-r", "DEBUG", "-t", "8250,QcomToolsPkg", "-C", "XBL_CORE", "--build_flags", "cleanall"],
+
+  # Development build for testing
+  "abl" : ["--variant", "LAA", "-r", "DEBUG", "-t", "QcomModulePkg"],
+
+  #Test Pkg
+  "tests" : ["--variant", "LAA", "-r", "DEBUG", "-t", "QcomToolsPkg,QcomTestPkg"],
+
+  #SOC tests
+  "soctests" : ["--variant", "LAA", "-r", "DEBUG", "-t", "QcomToolsPkg,QcomSocPlatTestPkg"],
+
+  #Tools Pkg
+  "tools" : ["--variant", "LAA", "-r", "DEBUG", "-t", "QcomToolsPkg"]
+
+  }

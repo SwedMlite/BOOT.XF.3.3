@@ -1,0 +1,43 @@
+#/** @file 
+#                    UefiSecAppLoaderLib.inf
+#
+#
+# Copyright (c) 2018 Qualcomm Technologies, Inc. All rights reserved.
+#
+#  
+#**/
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 03/08/18   ai      Load UefiSecApp TA from raw partition 
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UefiSecAppLoaderLib 
+  FILE_GUID                      = D12D0015-7C56-49B3-BF9A-873115A16E2D 
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = UefiSecAppLoaderLib 
+
+[Sources]
+  UefiSecAppLoad.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+
+[LibraryClasses]
+  UefiBootServicesTableLib
+  DebugLib 
+
+[Guids]
+
+[Protocols]
+  gQcomQseecomProtocolGuid       ## CONSUMES
+

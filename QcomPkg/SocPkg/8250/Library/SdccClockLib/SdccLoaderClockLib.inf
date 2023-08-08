@@ -1,0 +1,40 @@
+#/** @file SdccLoaderClockLib.inf
+#
+#  SDCC XBL Loader Clock BSP Target specific INF file
+#
+#  Copyright (c) 2019 Qualcomm Technologies, Inc. All Rights Reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when         who     what, where, why
+# ----------   ---     ---------------------------------------------------------
+# 2019-07-16   jt      Initial version 
+#
+#==============================================================================
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SdccLoaderClockLib
+  FILE_GUID                      = 5EF4E30E-5DCC-4673-8DBC-731108B637B0 
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SdccClockLib
+
+[Sources.common]
+  ./../../Settings/SDCC/loader/SdccLoaderClockLib.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/SocPkg/SocPkg.dec
+  QcomPkg/XBLLoaderApi.dec
+
+[LibraryClasses]
+  ClockTargetLib
+  SdccTargetLib

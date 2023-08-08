@@ -1,0 +1,36 @@
+#/** @file PwrUtilsApiLib.inf
+#
+#  PWR UTILS API library
+#
+#  Copyright (c) 2019,  Qualcomm Technologies, Inc. All rights reserved.
+#
+#**/
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PwrUtilsApiLib
+  FILE_GUID                      = 88a6dcfd-1628-40ac-ad2f-a3540b70ff32
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PwrUtilsApiLib
+
+#
+#  VALID_ARCHITECTURES           = ARM
+#
+
+[Sources.common]
+  pwr_utils_wrapper.c
+
+[Packages]
+  QcomPkg/QcomPkg.dec
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+
+#[LibraryClasses]
+
+[Protocols]
+ gEfiPwrUtilsProtocolGuid
+
+[Depex]
+  TRUE

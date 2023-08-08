@@ -1,0 +1,53 @@
+#/** @file
+#  
+#  PIL proxy vote lib
+#  
+#  Copyright (c) 2019, Qualcomm Technologies, Inc. All Rights Reserved.
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 03/28/19   ai      Initial revision
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PilProxyVoteLib
+  FILE_GUID                      = 72B26D4F-1497-4F6E-A54E-0C6BC9836AED
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PilProxyVoteLib
+
+[Sources]
+  PilProxyVoteLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  QcomPkg/QcomPkg.dec
+  ArmPkg/ArmPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  UefiLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  NpaApiLib
+  MemoryAllocationLib
+
+[Depex]
+  gEfiCateProtocolGuid AND gQcomScmProtocolGuid
+
+[Protocols]
+
+[Guids]
+
+[Pcd]
+
+[Guids.common]

@@ -1,0 +1,39 @@
+#/** @file PwrUtilsDxe.inf
+#
+#  PwrUtils Driver INF file
+#
+#  Copyright (c) 2019, Qualcomm Technologies Inc. All rights reserved.
+#
+#**/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PwrUtilsDxe
+  FILE_GUID                      = 0401b830-bff9-44a2-a5f6-95734a33c017
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PwrUtilsEntryPoint
+
+[Sources.common]
+  PwrUtilsDxe.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  QcomPkg/QcomPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  UefiLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  MuslLib
+  UefiDriverEntryPoint
+  PwrUtilsLib
+
+[Protocols]
+  gEfiPwrUtilsProtocolGuid
+
+[Depex]
+  TRUE
+

@@ -1,0 +1,38 @@
+#/** @file ChipInfoLib.inf
+#
+#  Build file for the ChipInfo Library.
+#
+#  Copyright (c) 2019 Qualcomm Technologies, Inc. All rights reserved.
+#
+#**/
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = ChipInfoDalFwkLib
+  FILE_GUID                      = AE26A932-86A9-4D16-B3B2-760E6B8D2F82
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = ChipInfoDalFwkLib
+
+# This INF doesn't link against ChipInfoLoaderLib or ChipInfoCoreLib
+# since each of these libs is missing from the other image's DSC,
+# causing build errors. Those libraries are required for initializing
+# ChipInfo. Instead, clients who want to use the DAL APIs need to mention
+# both ChipInfoDalFwkLib and the specific image library.
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = -Werror
+
+[Sources]
+  DalChipInfoFwk.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/XBLLoaderApi.dec
+
+[LibraryClasses]
+  BaseLib
+  MuslLib
+  ChipInfoCommonLib

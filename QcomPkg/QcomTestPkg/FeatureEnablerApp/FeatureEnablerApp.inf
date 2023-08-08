@@ -1,0 +1,35 @@
+#/** @file FeatureEnablerApp.inf
+#  
+#  FeatureEnabler protocol test application
+#  
+#  Copyright (c) 2019 Qualcomm Technologies, Inc.  All Rights Reserved.
+#  Qualcomm Technologies Proprietary and Confidential.
+#  
+#**/
+
+[Defines]
+  INF_VERSION                     = 0x00010005
+  BASE_NAME                       = FeatureEnablerApp
+  FILE_GUID                       = 130C5254-30F6-11E9-A19B-B29AA46FF77D
+  MODULE_TYPE                     = UEFI_APPLICATION
+  VERSION_STRING                  = 1.0
+  ENTRY_POINT                     = FeatureEnablerAppMain
+
+[Sources.common]
+  FeatureEnablerApp.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  UefiLib
+  QcomLib
+  UefiBootServicesTableLib
+  UefiApplicationEntryPoint
+  
+[Protocols]
+  gQcomFeatureEnablerProtocolGuid
+
+

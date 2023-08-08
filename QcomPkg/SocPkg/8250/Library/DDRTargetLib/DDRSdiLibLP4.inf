@@ -1,0 +1,54 @@
+#/** @file DDRSdiLib.inf
+#
+#  DDR SDI Lib
+#  
+#  Copyright (c) 2019 Qualcomm Technologies, Inc.  All Rights Reserved.
+#  Qualcomm Technologies Proprietary and Confidential.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+# when       who       what, where, why
+# --------   ---       ----------------------------------------------------------
+# 06/21/19   yps       Removed binaries section
+# 01/25/19   daisond   Initial Revision
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DDRSdiLib
+  FILE_GUID                      = B90EACA0-47CE-79C4-C1BA-14A4973FF8BC
+  MODULE_TYPE                    = SEC
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = DDRSdiLib
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = -DXBLSDICOMPONENT -DBOOT_PBL_H=\"pbl_sbl_shared.h\" -DUSE_LOADER_UTILS -DFEATURE_BOOT_EXTERN_DDR_COMPLETED -DBUILD_BOOT_CHAIN
+
+  
+[Sources.common]
+# SDI source
+  ../../../8250/Library/DDRTargetLib/ddr_sdi_wrapper_lp4.c
+  #../../../ddr_sdi_log.c
+  ../../../../XBLLoader/boot_extern_debug_interface.c
+  ../../../../Library/DDRLib/common/params/v5/ddr_params.h
+  #../../../ddr_sdi_log.h
+  ../../../8250/Library/DSFTargetLib/interface/src/ddr_fw_interface.c
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/SocPkg/SocPkg.dec
+  QcomPkg/XBLLoaderApi.dec
+  QcomPkg/SocPkg/8250/Library/DDRTargetLib/DDRTargetLibPkg.dec
+  QcomPkg/SocPkg/8250/Library/DSFTargetLib/DSFTargetLibPkg.dec
+  QcomPkg/Library/DDRLib/DDRLibPkg.dec
+  
+[LibraryClasses]
+  MuslLib
+  ClockTargetLib
+  IcbTargetLib
+  DDRFwSdiLib

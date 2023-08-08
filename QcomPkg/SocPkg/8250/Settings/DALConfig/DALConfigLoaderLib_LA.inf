@@ -1,0 +1,40 @@
+#/** @file DALConfigLoaderLib.inf
+#
+#  DAL configuration Loader library
+#
+#  Copyright (c) 2014-2016, 2018-2019, Qualcomm Technologies, Inc.
+#  All rights reserved.
+#  Qualcomm Technologies, Inc. Confidential and Proprietary
+#
+#**/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DALConfigLoaderLib
+  FILE_GUID                      = 8D0152C2-4ABA-4E9E-67FB-B18A98DC9582
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = DALConfigLoaderLib
+  MACRO_NAME                     = loader
+  CUSTOM_MAKEFILE                = DALConfigLoaderLib_LA.mk
+
+[Sources.common]
+  DALConfig_loader.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPkg/ArmPkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/XBLLoaderApi.dec  
+  QcomPkg/Library/AdcLib/build/AdcLibPkg.dec
+  QcomPkg/Library/TsensLib/TsensLibPkg.dec
+  QcomPkg/Library/BootTempCheckLib/BootTempCheckLibPkg.dec
+  QcomPkg/SocPkg/8250/Library/PmicLib/PmicLib.dec
+  #QcomPkg/SocPkg/Library/VSenseTargetLib/VSenseLoaderLib.dec
+
+
+[LibraryClasses]
+  BaseLib
+  DALGenLibLoader
+

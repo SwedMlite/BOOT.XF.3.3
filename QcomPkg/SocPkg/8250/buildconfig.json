@@ -1,0 +1,333 @@
+{
+  "Components" :[
+                 {   # reference sample, propagate to other components
+                   "Name" : "XBL_Loader" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build","-p","QcomPkg/SocPkg/8250/Common/Loader.dsc","-j", "QcomPkg/SocPkg/8250/$VAR/build_Loader.log","-w","-a","AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 },
+                                 {
+                                   "ToolChain" : "Lib_Size_check",
+                                   "Params" : ["-m","$BUILDROOT/Build/SM8250$VAR/Loader/$REL_$COMPILER/$AARCH/QcomPkg/XBLLoader/XBLLoader/DEBUG/XBLLoader_mapit_bootimem_ocimem.txt","-c","$BUILDROOT/QcomPkg/SocPkg/8250/libssizecfg.json"]
+                                 }
+
+                               ]
+                 } ,
+                 {   # reference sample, propagate to other components
+                   "Name" : "XBL_Ramdump" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build","-p","QcomPkg/SocPkg/8250/Common/Ramdump.dsc","-j", "QcomPkg/SocPkg/8250/$VAR/build_Ramdump.log","-w","-a","AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 } ,
+
+                 {
+                   "Name" : "DevPrg_lite" ,
+                   "Process" :[ 
+                                {
+                                  "ToolChain" : "CLANG40" ,
+                                  "AArch" : "AARCH64" ,
+                                  "Params" : ["build","-p", "QcomPkg/SocPkg/8250/Common/DevprogL.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_DevprogL.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                }
+                              ]
+                 } ,
+
+                 {
+                   "Name" : "DevPrg_ddr" ,
+                   "Process" : [ 
+                                 {
+                                    "ToolChain" : "CLANG40" ,
+                                    "AArch" : "AARCH64" ,
+                                    "Params" : ["build","-p", "QcomPkg/SocPkg/8250/Common/DevprogD.dsc","-j", "QcomPkg/SocPkg/8250/$VAR/build_DevprogD.log","-w", "-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 } ,
+
+                 {
+                   "Name" : "XBL_Core" ,
+                   "Process" : [
+                                 {
+                                    "ToolChain" : "CLANG40" ,
+                                    "AArch" : "AARCH64" ,
+                                    "Params" : ["build","-p", "QcomPkg/SocPkg/8250/$VAR/Core.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_Core.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 },
+                                 {
+                                    "ToolChain" : "Pack" ,
+                                    "Params" : ["$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/FVMAIN_COMPACT.Fv", "$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/uefi.elf", "0x9FC00000","elf", "64"]
+                                 }
+                               ]
+                 } ,
+                 
+                 {
+                   "Name" : "DDI" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build","-p", "QcomPkg/SocPkg/8250/Common/DDI.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_DDI.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 },
+                 {
+                   "Name" : "Pmic" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build", "-p", "QcomPkg/SocPkg/8250/Common/Pmic.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_Pmic.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 },
+                 {
+                   "Name" : "JtagProgrammer" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build","-p", "QcomPkg/SocPkg/8250/Common/JtagProgrammer.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_JtagProgrammer.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 },
+                 {
+                   "Name" : "LoaderTest" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build","-p", "QcomPkg/SocPkg/8250/Common/LoaderTest.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_LoaderTest.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 },
+                 {
+                   "Name" : "XBL_Sdi" ,
+                   "Process" : [
+                                 {
+                                   "ToolChain" : "CLANG40" ,
+                                   "AArch" : "AARCH64" ,
+                                   "Params" : ["build","-p", "QcomPkg/SocPkg/8250/Common/XblSdi.dsc", "-j", "QcomPkg/SocPkg/8250/$VAR/build_XblSdi.log","-w","-a", "AARCH64","-b","$REL","-D","PRODMODE=$PRODMODE", "-D", "VAR=$VAR"]
+                                 }
+                               ]
+                 }                
+                ] ,
+   "CreateImages" : [
+                       
+                      {
+                        "Name" : "XBL" ,    # Just cosmetic, readable field for reference, ignored by tool/script
+                        "Process" : [
+                                      {
+                                        "ToolChain" : "Merge" ,
+                                        "SecImage" : "$BUILDROOT/QcomPkg/SocPkg/8250/Library/XBL_SEC/xbl_sec.mbn",
+                                        "Components" : ["XBL_Loader", "XBL_Core", "XBL_Ramdump","XBL_Sdi"],
+                                        "Params" : ["-f","$FIRSTDLL", "-s", "$SECONDDLL", "-x","$XBLSEC", "-a", "64", "-b", "64", "-d", "64", "-o", "$BUILDROOT/Build/SM8250$VAR/Loader/$REL_$COMPILER/$AARCH/xbl.elf"]
+                                      },
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"],
+                                        "Params" : ["$BUILDROOT/Build/SM8250$VAR/Loader/$REL_$COMPILER/$AARCH/xbl.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"]
+                                      },
+                                      {
+                                        "ToolChain" : "Sign" ,
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign"],
+                                        "Params" : ["-t","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL",
+                                                    "-i", "$BUILDROOT/Build/SM8250$VAR/Loader/$REL_$COMPILER/$AARCH/xbl.elf", 
+                                                    "-g", "sbl1",
+                                                    "--config","$SECTOOLSROOT/config/integration/secimagev3.xml" ,
+                                                    "--hash_table_algo", "sha384",
+                                                    "--soc_hw_version","0x60080100",
+                                                    "--soc_vers","0x6008"]
+                                      }, 
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Params" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign/default/sbl1/xbl.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"]
+                                      }
+                                    ]
+                      } ,
+                      {
+                        "Name" : "UEFI" ,
+                        "Process" : [
+                                       {
+                                         "ToolChain" : "Copy",
+                                         "Components" : ["XBL_Core"],
+                                         "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"],
+                                         "Params" : ["$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/uefi.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"]
+                                         
+                                       },
+                                       {
+                                         "ToolChain" : "Sign",
+                                         "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign"],
+                                         "Params" : ["-t","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL",
+                                                     "-i", "$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/uefi.elf", 
+                                                     "-g", "uefi",
+                                                     "--config","$SECTOOLSROOT/config/integration/secimagev3.xml" ,
+                                                     "--hash_table_algo", "sha384",
+                                                     "--soc_hw_version","0x60080100",
+                                                     "--soc_vers","0x6008"]
+                                       },
+                                       {
+                                         "ToolChain" : "Copy",
+                                         "Params" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign/default/uefi/uefi.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"]
+                                       }
+                                    ]
+                      },
+                                
+                      {
+                        "Name" : "DevPrg_ddr" ,
+                        "Process" : [
+                                      {
+                                        "ToolChain" : "Elf_to_Bin",
+                                        "Components" : ["Pmic"],
+                                        "Createfolders" : ["$BUILDROOT/Build/SM8250$VAR/xblconfig"],
+                                        "Params" : ["-O", "binary","$BUILDROOT/Build/SM8250$VAR/Pmic/$REL_$COMPILER/$AARCH/$TARGETROOT/Library/PmicLib/loader/Pmic/DEBUG/Pmic.dll", "$BUILDROOT/Build/SM8250$VAR/xblconfig/Pmic.bin"]
+                                      },
+                                      {
+                                        "ToolChain" : "GenXBLConfig",
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"],
+                                        "Params" : ["-i", "$BUILDROOT/$TARGETROOT/$VAR/create_xbl_config.json", "-b", "$BUILDROOT", "--sectools_directory", "$SECTOOLSROOT", "--tools_path", "$BUILDROOT/QcomPkg/Tools/XBLConfig", "-f", "ELF", "--output-file", "$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/xbl_config", "--autogen_directory", "$BUILDROOT/Build/SM8250$VAR/xblconfig", "--elf-address", "0x148D7000"]
+                                      },                        
+                                      {
+                                        "ToolChain" : "Merge",
+                                        "SecImage" : "QcomPkg/SocPkg/8250/Library/XBL_SEC/xbl_sec.mbn",
+                                        "Components" : ["DevPrg_ddr"],
+                                        "Params" : ["-f","$FIRSTDLL", "-s", "$BUILDROOT/Build/SM8250$VAR/xblconfig/auto_gen/elf_files/create_cli/xbl_config.elf", "-x","$XBLSEC", "-a", "64", "-b", "64", "-d", "64", "-o", "$BUILDROOT/Build/SM8250$VAR/DevprogD/$REL_$COMPILER/$AARCH/prog_firehose_ddr.elf"]
+                                      },
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"],
+                                        "Params" : ["$BUILDROOT/Build/SM8250$VAR/DevprogD/$REL_$COMPILER/$AARCH/prog_firehose_ddr.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"]
+                                      },
+                                      {
+                                        "ToolChain" : "Sign" ,
+                                        "Params" : ["-t","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL",
+                                                    "-i", "$BUILDROOT/Build/SM8250$VAR/DevprogD/$REL_$COMPILER/$AARCH/prog_firehose_ddr.elf",
+                                                    "-g", "ENPRG",
+                                                    "--config","$SECTOOLSROOT/config/integration/secimagev3.xml" ,
+                                                    "--hash_table_algo", "sha384",
+                                                    "--soc_hw_version","0x60080100",
+                                                    "--soc_vers","0x6008"]
+                                      },
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Params" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign/default/ENPRG/prog_firehose_ddr.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"]
+                                      }
+                                    ]
+                      },
+                      
+                      {
+                        "Name" : "DevPrg_lite" ,
+                        "Process" : [
+                                      {
+                                        "ToolChain" : "Elf_to_Bin",
+                                        "Components" : ["Pmic"],
+                                        "Createfolders" : ["$BUILDROOT/Build/SM8250$VAR/xblconfig"],
+                                        "Params" : ["-O", "binary","$BUILDROOT/Build/SM8250$VAR/Pmic/$REL_$COMPILER/$AARCH/$TARGETROOT/Library/PmicLib/loader/Pmic/DEBUG/Pmic.dll", "$BUILDROOT/Build/SM8250$VAR/xblconfig/Pmic.bin"]
+                                      },
+                                      {
+                                        "ToolChain" : "GenXBLConfig",
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"],
+                                        "Params" : ["-i", "$BUILDROOT/$TARGETROOT/$VAR/create_xbl_config.json", "-b", "$BUILDROOT", "--sectools_directory", "$SECTOOLSROOT", "--tools_path", "$BUILDROOT/QcomPkg/Tools/XBLConfig", "-f", "ELF", "--output-file", "$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/xbl_config", "--autogen_directory", "$BUILDROOT/Build/SM8250$VAR/xblconfig", "--elf-address", "0x148D7000"]
+                                      },                          
+                                      {
+                                        "ToolChain" : "Merge",
+                                        "SecImage" : "QcomPkg/SocPkg/8250/Library/XBL_SEC/xbl_sec.mbn",
+                                        "Components" : ["DevPrg_lite"],
+                                        "Params" : ["-f","$FIRSTDLL", "-s", "$BUILDROOT/Build/SM8250$VAR/xblconfig/auto_gen/elf_files/create_cli/xbl_config.elf", "-x","$XBLSEC", "-a", "64", "-b", "64", "-d", "64", "-o", "$BUILDROOT/Build/SM8250$VAR/DevprogL/$REL_$COMPILER/$AARCH/prog_firehose_lite.elf"]
+                                      },
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"],
+                                        "Params" : ["$BUILDROOT/Build/SM8250$VAR/DevprogL/$REL_$COMPILER/$AARCH/prog_firehose_lite.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"]
+                                      },
+                                      {
+                                        "ToolChain" : "Sign" ,
+                                        "Params" : ["-t","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL",
+                                                    "-i", "$BUILDROOT/Build/SM8250$VAR/DevprogL/$REL_$COMPILER/$AARCH/prog_firehose_lite.elf", 
+                                                    "-g", "ENPRG",
+                                                    "--config","$SECTOOLSROOT/config/integration/secimagev3.xml" ,
+                                                    "--hash_table_algo", "sha384",
+                                                    "--soc_hw_version","0x60080100",
+                                                    "--soc_vers","0x6008"]
+                                      },
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Params" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign/default/ENPRG/prog_firehose_lite.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"]
+                                      }
+                                    ]
+                      },
+                      {
+                        "Name" : "JtagProgrammer" ,
+                        "Process" : [
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Components" : ["JtagProgrammer"],
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"],
+                                        "Params" : ["$BUILDROOT/Build/SM8250$VAR/JtagProgrammer/$REL_$COMPILER/$AARCH/QcomPkg/Library/JtagProgrammerLib/JtagProgrammer/DEBUG/JtagProgrammer.dll","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned/JtagProgrammer.elf"]
+                                      }, 
+                                      {
+                                        "ToolChain" : "Copy",
+                                        "Params" : ["$BUILDROOT/Build/SM8250$VAR/JtagProgrammer/$REL_$COMPILER/$AARCH/QcomPkg/Library/JtagProgrammerLib/JtagProgrammer/DEBUG/JtagProgrammer.dll","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/JtagProgrammer.elf"]
+                                      } 
+                                    ]
+                      },
+                      {
+                        "Name" : "xbl_config" ,
+                        "Process" : [
+                                      {
+                                        "ToolChain" : "Elf_to_Bin",
+                                        "Components" : ["Pmic"],
+                                        "Createfolders" : ["$BUILDROOT/Build/SM8250$VAR/xblconfig"],
+                                        "Params" : ["-O", "binary","$BUILDROOT/Build/SM8250$VAR/Pmic/$REL_$COMPILER/$AARCH/$TARGETROOT/Library/PmicLib/loader/Pmic/DEBUG/Pmic.dll", "$BUILDROOT/Build/SM8250$VAR/xblconfig/Pmic.bin"]
+                                      },
+                                      {
+                                        "ToolChain" : "GenXBLConfig",
+                                        "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"],
+                                        "Params" : ["-i", "$BUILDROOT/$TARGETROOT/$VAR/create_xbl_config.json",
+                                                    "-b", "$BUILDROOT",
+                                                    "--sectools_directory", "$SECTOOLSROOT",
+                                                    "--tools_path", "$BUILDROOT/QcomPkg/Tools/XBLConfig",
+                                                    "-f", "ELF",
+                                                    "--output-file", "$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/xbl_config", 
+                                                    "--autogen_directory", "$BUILDROOT/Build/SM8250$VAR/xblconfig", 
+                                                    "--elf-address", "0x148D0000", 
+                                                    "--soc-hw-version","0x60080100",
+                                                    "--soc-vers","0x6008"]                                                    
+                                      }
+                                    ]
+                      },
+                      {
+                        "Name" : "ImageFv" ,
+                        "Process" : [
+                                       {
+                                          "ToolChain" : "Pack" ,
+                                          "Params" : ["$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/IMAGEFV_COMPACT.Fv", "$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/imagefv.elf", "0x0","elf", "32"]
+                                       },
+                                       {
+                                         "ToolChain" : "Copy",
+                                         "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"],
+                                         "Params" : ["$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/imagefv.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/unsigned"]
+                                         
+                                       },
+                                       {
+                                         "ToolChain" : "Sign",
+                                         "Createfolders" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign"],
+                                         "Params" : ["-t","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL",
+                                                     "-i", "$BUILDROOT/Build/SM8250$VAR/Core/$REL_$COMPILER/FV/imagefv.elf", 
+                                                     "-g", "uefifv",
+                                                     "--config","$SECTOOLSROOT/config/integration/secimagev3.xml",
+                                                     "--hash_table_algo", "sha384",
+                                                     "--soc_hw_version","0x60080100",
+                                                     "--soc_vers","0x6008"]
+                                       },
+                                       {
+                                         "ToolChain" : "Copy",
+                                         "Params" : ["$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL/sign/default/uefifv/imagefv.elf","$BUILDROOT/$TARGETROOT/Bin/$VAR/$REL"]
+                                       }
+                                    ]
+                      }                      
+          ]
+          
+ }

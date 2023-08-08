@@ -1,0 +1,42 @@
+#/** @file SdccCoreTargetLib.inf
+#  
+#  SDCC BSP Target specific INF file
+#  
+#  Copyright (c) 2019 Qualcomm Technologies, Inc. All Rights Reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when         who     what, where, why
+# ----------   ---     ---------------------------------------------------------
+# 2019-07-16   jt      Initial version
+#
+#==============================================================================
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SdccCoreTargetLib
+  FILE_GUID                      = 6C2E1D26-58D4-4F2B-9620-D6CA1D14225D 
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SdccTargetLib 
+
+[Sources.common]
+  ./../../Settings/SDCC/core/SdccCoreBspLib.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/SocPkg/SocPkg.dec
+
+[LibraryClasses]
+  ArmLib
+  SdccClockLib 
+
+[Protocols]
+  gEfiHalIommuProtocolGuid

@@ -1,0 +1,39 @@
+#/** @file SdccLoaderTargetLib.inf
+#  
+#  SDCC BSP Target specific INF file
+#  
+#  Copyright (c) 2019 Qualcomm Technologies, Inc. All Rights Reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when         who     what, where, why
+# ----------   ---     ---------------------------------------------------------
+# 2019-07-16   jt      Initial version
+#
+#==============================================================================
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SdccLoaderTargetLib
+  FILE_GUID                      = B95422FB-AC87-4BBB-8BB0-5E85335267A5 
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SdccTargetLib 
+
+[Sources.common]
+  ./../../Settings/SDCC/loader/SdccLoaderBspLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/QcomPkg.dec
+  QcomPkg/SocPkg/SocPkg.dec
+  QcomPkg/XBLLoaderApi.dec
+
+[LibraryClasses]
+  SdccClockLib
+  PmicLoaderLib

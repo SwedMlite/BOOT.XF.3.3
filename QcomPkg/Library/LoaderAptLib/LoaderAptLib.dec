@@ -1,0 +1,40 @@
+#/** @file AptShareFuncPkg.dec
+# apt shared function  package.
+#
+# Copyright (c) 2013-2015, Qualcomm Technologies, Inc. All rights reserved.
+#
+#**/
+#
+#==============================================================================
+#                              EDIT HISTORY
+#
+#  
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 07/17/15   fz      Initial Version for STI
+#
+#==============================================================================
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = AptSharedFunProducerFuncLib
+  PACKAGE_GUID                   = eabc3681-1cf2-44ff-a14d-ec442900614d
+  PACKAGE_VERSION                = 0.1
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types:
+#  BASE SEC PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER UEFI_APPLICATION
+#
+################################################################################
+[Includes.common]
+../../Include
+../../Include/Library
+../../XBLLoader
+../../Library/SerialPortLib
+../../LoaderTestPkg/Library/LoaderTestLib
+

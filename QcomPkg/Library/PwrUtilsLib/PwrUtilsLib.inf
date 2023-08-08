@@ -1,0 +1,44 @@
+#/** @file PwrUtilsLib.inf
+#
+#  Build file for the Pwr Utils Library.
+#
+#  Copyright (c) 2019, Qualcomm Technologies, Inc. All rights reserved.
+#
+#**/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PwrUtilsLib
+  FILE_GUID                      = 8ae1929a-7064-4088-964d-f666d7d0b9fb
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PwrUtilsLib
+
+[Sources.common]
+  pwr_utils_lvl.c
+
+[BuildOptions]
+  RVCT:*_*_*_CC_FLAGS = -DTARGET_UEFI -DFEATURE_WINCE_OAL -J QcomPkg/Library/MuslLib/musl/include
+
+[BuildOptions.AARCH64]
+  RVCT:*_*_*_CC_FLAGS = -DTARGET_UEFI -DFEATURE_WINCE_OAL
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  QcomPkg/QcomPkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+
+[LibraryClasses]
+  MuslLib
+  CoreUtilsLib
+  ArmLib
+  BaseLib
+  UefiLib
+  DALModEnvLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  CmdDbApiLib
+
+[BuildOptions.AARCH64]
+  MSFT:*_*_*_CC_FLAGS =

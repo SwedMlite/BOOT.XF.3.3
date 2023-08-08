@@ -1,0 +1,57 @@
+#/** @file PILProxyDxe.inf
+#
+#    proxy vote driver
+# #  Copyright (c) 2019, Qualcomm Technologies Inc. All rights reserved.  #
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when         who     what, where, why
+# ----------   ---     ----------------------------------------------------------
+# 03/28/19     ai      Initial version
+# 10/30/19     yw      changed to general proxy vote for all subsystem
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PILProxyDxe
+  FILE_GUID                      = 8CF9C920-D5E6-4DAC-BEF9-6E6A4EEC7ADD
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PILProxyDxeEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = ARM, AARCH64
+#
+
+[Sources]
+  PILProxyDxe.c
+
+[Packages]
+  EmbeddedPkg/EmbeddedPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  QcomPkg/QcomPkg.dec
+  ArmPkg/ArmPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+  DebugLib
+  QcomLib
+  PilProxyVoteLib
+
+[Protocols]
+  gEfiPilProtocolGuid
+  gPILProxyCDSPGuid
+  gPILProxyNPUSSGuid
+  gPILProxyAdspGuid
+  gPILProxySlpiGuid
+
+[Depex]
+  TRUE

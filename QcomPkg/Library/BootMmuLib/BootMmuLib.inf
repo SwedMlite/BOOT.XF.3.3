@@ -1,0 +1,36 @@
+#/** @file BootMmuLib.inf
+#  BootMmuLib - APIs for setting up page tables / MMU operations
+#  
+#  Copyright (c) 2019 Qualcomm Technologies Inc. All rights reserved.
+#
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 05/24/19   vk      Created 
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BootMmuLib
+  FILE_GUID                      = 49FDDD5F-5430-4942-9970-DDA96562FF91
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = BootMmuLib
+
+[Sources.AARCH64]
+  BootMmu.S | GCC
+  boot_page_table.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomPkg/XBLLoaderApi.dec
+  QcomPkg/Library/MuslLib/MuslLib.dec
+
+[LibraryClasses]
+  BaseLib  

@@ -1,0 +1,32 @@
+#/** @file HmacAppRelease.inf
+#  
+#  Component discription file for clock test/application module
+#  
+#  Copyright (c) 2014 Qualcomm Technologies Inc. All rights reserved.
+#
+#  
+#**/
+
+#==============================================================================
+#                              EDIT HISTORY
+#
+#
+# when       who     what, where, why
+# --------   ---     ----------------------------------------------------------
+# 03/30/18   jp      Initial version
+#
+#==============================================================================
+
+[Defines]
+  INF_VERSION                     = 0x00010005
+  BASE_NAME                       = HmacTest
+  FILE_GUID                       = 448d7753-927f-45d2-9086-caeb762a3cc8
+  MODULE_TYPE                     = UEFI_APPLICATION
+  VERSION_STRING                  = 1.0
+  ENTRY_POINT                     = HmacAppMain
+
+[Binaries.Arm]
+   PE32|HmacTest.efi|RELEASE
+
+[Binaries.AARCH64]
+   PE32|HmacTest.efi|RELEASE
